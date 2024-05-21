@@ -1,0 +1,10 @@
+<form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+    <app-input formControlName="user" placeholder="Introduce tu usuario" label="Usuario"></app-input>
+    <app-input formControlName="password" type="password" placeholder="Introduce tu contraseña"
+        label="Password"></app-input>
+    <app-input formControlName="id_level" type="select" placeholder="--Seleccionar--" label="Grado de instrucción"
+        [options]="educationLevels">
+    </app-input>
+
+    <button mat-raised-button type="submit">Login</button>
+</form>

@@ -1,1 +1,74 @@
-/* You can add global styles to this file, and also import other style files */
+@use "@angular/material" as mat;
+@include mat.core();
+
+@import "primeng/resources/themes/lara-light-blue/theme.css";
+@import "primeng/resources/primeng.css";
+@import "primeicons/primeicons.css";
+
+@tailwind components;
+@tailwind utilities;
+
+
+
+@layer reset, primeng;
+
+// reset styles
+@layer reset {
+    button {
+        &:focus {
+            box-shadow: none;
+        }
+    }
+
+    .p-toolbar {
+        border-radius: 0;
+        border: none;
+    }
+}
+
+.card {
+    background: var(--surface-card);
+    padding: 2rem;
+    border-radius: 10px;
+    margin-bottom: 1rem;
+}
+
+html,
+body {
+    height: 100%;
+}
+
+body {
+    margin: 0;
+    font-family: Roboto, "Helvetica Neue", sans-serif;
+    --primary-color: #cc0000;
+}
+
+$mat-primary: (
+    main: #cc0000,
+    lighter: #f0b3b3,
+    darker: #b90000,
+    200: #cc0000, 
+    // For slide toggle,
+    contrast : (
+        main: #ffffff,
+        lighter: #000000,
+        darker: #ffffff,
+    ),
+);
+
+$theme-primary: mat.define-palette($mat-primary, main, lighter, darker);
+$theme-accent: mat.define-palette(mat.$indigo-palette, A200, A100, A400);
+
+$my-theme: mat.define-light-theme(
+    (
+        color: (
+            primary: $theme-primary,
+            accent: $theme-accent,
+        ),
+        typography: mat.define-typography-config(),
+        density: 0,
+    )
+);
+
+@include mat.all-component-themes($my-theme);
