@@ -1,13 +1,33 @@
-<p-toolbar styleClass="bg-blue-100 shadow-2 mat-elevation-z5 relative z-5">
-  <div class="p-toolbar-group-start">
-    <p-button (onClick)="collapsed.set(!collapsed())" icon="pi pi-align-justify" class="mr-2" />
+<mat-toolbar class="flex justify-between items-center bg-gray-800 p-4">
+  <button mat-icon-button class="text-white" aria-label="Menu icon">
+    <mat-icon>menu</mat-icon>
+  </button>
+  <span class="text-white text-lg font-bold">My App</span>
+
+  <!-- Menú de usuario -->
+  <button mat-icon-button [matMenuTriggerFor]="userMenu" aria-label="User profile menu">
+    <img src="assets/avatar1.png" alt="User" class="w-10 h-10 rounded-full object-cover"/>
+  </button>
+</mat-toolbar>
+
+<!-- Menú desplegable para usuario -->
+<mat-menu #userMenu="matMenu" class="p-4">
+  <div class="text-center p-4">
+    <img src="assets/avatar1.png" alt="User" class="w-16 h-16 rounded-full object-cover mx-auto mb-4"/>
+    <h4 class="text-lg font-semibold">Sandra Hernández Gómez</h4>
+    <p class="text-gray-600">sandrasgmail.com</p>
   </div>
-</p-toolbar>
+  <mat-divider></mat-divider>
+  <button mat-menu-item>Ver mi perfil</button>
+  <button mat-menu-item>Cerrar sesión</button>
+</mat-menu>
+
+
 <mat-sidenav-container>
   <mat-sidenav opened mode="side" [style.width]="sidenavWidth()">
-    <app-custom-sidenav [collapsed]="collapsed()" />
+    <app-custom-sidenav />
   </mat-sidenav>
-  <mat-sidenav-content class="p-6" [style.margin-left]="sidenavWidth()">
+  <mat-sidenav-content class="p-6 bg-[#141925]" [style.margin-left]="sidenavWidth()">
     <router-outlet></router-outlet>
   </mat-sidenav-content>
 </mat-sidenav-container>

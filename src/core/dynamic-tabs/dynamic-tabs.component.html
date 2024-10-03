@@ -1,0 +1,16 @@
+<div>
+    <mat-tab-group mat-stretch-tabs="false" mat-align-tabs="start" animationDuration="0ms"
+        [(selectedIndex)]="selectedIndex" (selectedIndexChange)="onTabChange($event)">
+        <mat-tab *ngFor="let tab of tabs; let i = index">
+            <ng-template mat-tab-label>
+                {{ tab.label }}
+                <button mat-icon-button *ngIf="i !== fixedTabIndex" (click)="closeTab($event, i)">
+                    <mat-icon>close</mat-icon>
+                </button>
+            </ng-template>
+            <ng-container *ngIf="i === selectedIndex">
+                <router-outlet></router-outlet>
+            </ng-container>
+        </mat-tab>
+    </mat-tab-group>
+</div>

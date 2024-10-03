@@ -41,17 +41,19 @@ body {
 body {
     margin: 0;
     font-family: Roboto, "Helvetica Neue", sans-serif;
-    --primary-color: #cc0000;
+    --primary-color: #004E8B;
 }
 
+$primary-color: #004E8B;
+$primary-lighter: lighten($primary-color, 20%);
+$primary-darker: darken($primary-color, 20%);
 $mat-primary: (
-    main: #cc0000,
-    lighter: #f0b3b3,
-    darker: #b90000,
-    200: #cc0000, 
+    main: $primary-color,
+    lighter: $primary-lighter,
+    darker: $primary-darker,
+    200: $primary-color,
     // For slide toggle,
-    contrast : (
-        main: #ffffff,
+    contrast : (main: #ffffff,
         lighter: #000000,
         darker: #ffffff,
     ),
@@ -60,15 +62,48 @@ $mat-primary: (
 $theme-primary: mat.define-palette($mat-primary, main, lighter, darker);
 $theme-accent: mat.define-palette(mat.$indigo-palette, A200, A100, A400);
 
-$my-theme: mat.define-light-theme(
-    (
-        color: (
-            primary: $theme-primary,
-            accent: $theme-accent,
-        ),
-        typography: mat.define-typography-config(),
-        density: 0,
-    )
-);
+$my-theme: mat.define-light-theme((color: (primary: $theme-primary,
+                accent: $theme-accent,
+            ),
+            typography: mat.define-typography-config(),
+            density: 0,
+        ));
 
 @include mat.all-component-themes($my-theme);
+
+
+.mat-mdc-tab-ripple {
+    border: 1px solid rgb(230, 222, 222);
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+}
+
+.mdc-tab-indicator--active {
+    background-color: #0e4e7f !important;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+}
+
+.mat-mdc-tab.mdc-tab--active .mdc-tab__text-label {
+    color: #fff !important;
+    font-size: 14px;
+}
+
+.mdc-tab__text-label {
+    font-size: 14px;
+    font-weight: bold;
+    letter-spacing: normal;
+}
+
+.mat-mdc-tab-body-wrapper {
+    border: 1px solid transparent !important;
+}
+
+
+.mdc-list-item__primary-text {
+    color: #ffffff !important;
+}
+
+mat-icon {
+    color: #ffffff !important;
+}

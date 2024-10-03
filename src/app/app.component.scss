@@ -6,3 +6,18 @@ mat-sidenav,
 mat-sidenav-content {
     transition: all 500ms ease-in-out;
 }
+
+.example-spacer {
+    flex: 1 1 auto;
+}
+
+mat-sidenav {
+    background-color: #1c212d;
+    position: fixed;
+}
+
+mat-toolbar {
+    background-color: #141925;
+    color: #ffffff;
+    height: 100px;
+}

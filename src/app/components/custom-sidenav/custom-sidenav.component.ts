@@ -1,5 +1,5 @@
 import { CommonModule } from '@angular/common';
-import { Component, Input, computed, signal } from '@angular/core';
+import { Component, EventEmitter, Input, Output, computed, signal } from '@angular/core';
 import { MatListModule } from '@angular/material/list';
 import { MatIconModule } from '@angular/material/icon';
 import { RouterModule } from '@angular/router';
@@ -11,7 +11,6 @@ export type MenuItem = {
   route: string;
 }
 
-
 @Component({
   selector: 'app-custom-sidenav',
   standalone: true,
@@ -22,31 +21,18 @@ export type MenuItem = {
 export class CustomSidenavComponent {
 
   sideNavCollapsed = signal(false);
-  @Input() set collapsed(val: boolean){
+  @Input() set collapsed(val: boolean) {
     this.sideNavCollapsed.set(val);
   }
 
   menuItems = signal<MenuItem[]>([
-    {
-      icon: 'dashboard',
-      label: 'Dashboard',
-      route: 'dashboard',
-    },
-    {
-      icon: 'video_library',
-      label: 'Content',
-      route: 'content',
-    },
-    {
-      icon: 'analytics',
-      label: 'Analytics',
-      route: 'analytics',
-    },
-    {
-      icon: 'message',
-      label: 'Comments',
-      route: 'comments',
-    }
+    { icon: 'dashboard', label: 'Inicio', route: 'dashboard', },
+    { icon: 'group', label: 'Operaciones', route: 'usuarios', },
+    { icon: 'collections_bookmark', label: 'Tus productos', route: 'productos', },
+    { icon: 'currency_exchange', label: 'Configuración', route: 'venta', },
+    { icon: 'edit_note', label: 'Contáctanos', route: 'historial_venta', },
+    { icon: 'receipt', label: 'Promos ClubHola', route: 'reportes', },
+    { icon: 'receipt', label: 'Ofertas para ti', route: 'reportes', },
   ]);
 
   profilePicSize = computed(() => this.sideNavCollapsed() ? '32' : '100');
